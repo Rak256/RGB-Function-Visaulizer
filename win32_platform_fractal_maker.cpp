@@ -13,7 +13,7 @@ Even Array Index Values:
 
 Special Notations (note first index of sequence in the representations is odd):
 [1,4,0] - loop variable x
-[2,4,0] - loop variable y
+[-1,4,0] - loop variable y
 
 */
 
@@ -256,6 +256,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
                         if(g_IntArray[k] == 1 && g_IntArray[k+1] == 4 && g_IntArray [k+2] == 0){
                             //get to next value
                             k += 4;
+                            //check if k is out of vector size
+                             if (k > g_IntArray.size()){
+                                result += x;
+                                break;
+                             }
                             //only add when confirmed that term is complete
                             if (g_IntArray[k-1] == 1 || g_IntArray[k-1] == 2 ){
                             result += x;
@@ -272,6 +277,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
                         else if (g_IntArray[k] == 2 && g_IntArray[k+1] == 4 && g_IntArray [k+2] == 0){
                             //get to next value
                             k += 4;
+                             //check if k is out of vector size
+                             if (k > g_IntArray.size()){
+                                result += y;
+                                break;
+                             }
                             if (g_IntArray[k-1] == 1 ||g_IntArray[k-1] == 2 ){
                             result += y;
                             }
@@ -287,6 +297,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
                         else{
                             //get to next value
                             k += 2;
+                             //check if k is out of vector size
+                             if (k > g_IntArray.size()){
+                                result += g_IntArray[k];
+                                break;
+                             }
 
                            if (g_IntArray[k-1] == 1 ||g_IntArray[k-1] == 2 ){
                             result += g_IntArray[k];
@@ -305,6 +320,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
                  else if (g_IntArray[k-1] == 2){
                             if(g_IntArray[k] == 1 && g_IntArray[k+1] == 4 && g_IntArray [k+2] == 0){
                              k += 4;
+                              //check if k is out of vector size
+                             if (k > g_IntArray.size()){
+                                result -= x;
+                                break;
+                             }
                             if (g_IntArray[k-1] == 3 || g_IntArray[k-1] == 4){
                                //check if the term is being negated. if so, set subtract to true 
                                subtract = true;
@@ -324,16 +344,21 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
                             }
                             else if (g_IntArray[k] == 2 && g_IntArray[k+1] == 4 && g_IntArray [k+2] == 0){
                                 k += 4;
+                            //check if k is out of vector size
+                             if (k > g_IntArray.size()){
+                                result -= y;
+                                break;
+                             }
                             if (g_IntArray[k-1] == 3 || g_IntArray[k-1] == 4){
                                //check if the term is being negated. if so, set subtract to true 
                                subtract = true;
 
                                if(g_IntArray[k-1] == 3){
-                                term *= x;
+                                term *= y;
                                }
 
                                else{
-                                term /= x;
+                                term /= y;
                                }
                             }
 
@@ -344,16 +369,21 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 
                             else{
                                 k += 2;
+                                //check if k is out of vector size
+                             if (k > g_IntArray.size()){
+                                result -= g_IntArray[k];
+                                break;
+                             }
                             if (g_IntArray[k-1] == 3 || g_IntArray[k-1] == 4){
                                //check if the term is being negated. if so, set subtract to true 
                                subtract = true;
 
                                if(g_IntArray[k-1] == 3){
-                                term *= x;
+                                term *= g_IntArray[k];
                                }
 
                                else{
-                                term /= x;
+                                term /= g_IntArray[k];
                                }
                             }
 
