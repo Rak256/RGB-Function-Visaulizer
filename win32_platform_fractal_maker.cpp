@@ -13,7 +13,7 @@ Even Array Index Values:
 
 Special Notations (note first index of sequence in the representations is odd):
 [1,4,0] - loop variable x
-[-1,4,0] - loop variable y
+[2,4,0] - loop variable y
 
 */
 
